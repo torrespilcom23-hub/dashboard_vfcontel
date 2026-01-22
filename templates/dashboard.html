@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DASHBOARD - Centro de Control</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="title">
+            <div class="title-row">
+                <img src="{{ url_for('static', filename='logo_mdi.png') }}"
+                    alt="Municipalidad de Independencia"
+                    class="logo">
+
+                <h1>DASHBOARD</h1>
+            </div>
+        <p>CENTRO DE CONTROL DE MONITOREO</p>
+        <p>MUNICIPALIDAD DISTRITAL DE INDEPENDENCIA</p>
+    </div>
+
+
+    <a class="btn-exit" href="{{ url_for('salir') }}">SALIR</a>
+  </header>
+
+  <main class="container">
+    {% for bloque in bloques %}
+      <div class="block">
+        <div class="block-title">
+        {{ bloque.titulo }} ({{ bloque.bocinas|length }})
+        </div>
+
+        <div class="grid">
+          {% for id, link in bloque.bocinas %}
+            <a class="btn" target="_blank" rel="noopener"
+               href="{{ url_for('ir_bocina', bocina_id=id) }}">
+              IR BOCINA {{ id }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </main>
+
+  <div class="dev-logo">
+    <a href="https://vfcontel.com" target="_blank" rel="noopener">
+        <img src="{{ url_for('static', filename='logo_dev.png') }}"
+            alt="Desarrollado por VF Contel">
+    </a>
+   </div>
+
+
+    
+</body>
+</html>

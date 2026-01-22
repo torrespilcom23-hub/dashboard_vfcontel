@@ -1,0 +1,154 @@
+:root {
+  --bg: #0b1c2d;        /* fondo general */
+  --panel: #102a43;    /* paneles */
+  --text: #e9ecff;
+  --muted: #b8bfdc;
+}
+
+* { box-sizing: border-box; }
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  /* Imagen de fondo */
+  background-image: url("/static/bg_dashboard.jpg");
+  background-size: cover;        /* Ajusta a pantalla */
+  background-position: center;   /* Centrada */
+  background-repeat: no-repeat;  /* No repetir */
+  background-attachment: fixed;  /* Efecto fijo */
+
+  color: var(--text);
+}
+
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: var(--panel);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
+.title p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.container {
+  padding: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.btn {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 10px;
+  border-radius: 10px;
+  background: #2b6cff;
+  color: white;
+  font-weight: 700;
+  transition: transform 0.08s ease, filter 0.2s ease;
+  user-select: none;
+}
+
+
+.btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-exit {
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #ff3b3b;
+  color: white;
+  font-weight: 800;
+}
+.btn-exit:hover { filter: brightness(1.05); }
+
+
+.block {
+  margin-bottom: 18px;
+  padding: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+}
+
+.block-title {
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #e9ecff;
+  letter-spacing: 0.4px;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .block { margin-bottom: 0; }
+}
+
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 50px;      /* ajusta si quieres más grande */
+  width: auto;
+}
+
+
+
+.dev-logo {
+  position: fixed;
+  bottom: 14px;
+  right: 16px;
+  opacity: 0.75;
+  z-index: 999;
+}
+
+.dev-logo img {
+  height: 58px;   /* ajusta tamaño si deseas */
+  width: auto;
+  transition: opacity 0.2s ease;
+}
+
+.dev-logo img:hover {
+  opacity: 1;
+}
+
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 20, 40, 0.6); /* controla la oscuridad */
+  z-index: -1;
+}
